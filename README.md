@@ -21,15 +21,14 @@ Realizei algumas mudanças no problema
 2. O número de ingredientes iniciais de cada fumante é escolhido pelo usuário.
 3. Os ingredientes iniciais do usuário são randomicos.
 
-Limitações:
-1. O número de fumantes não é limitado, mas com um grande número pode ser que a animação não rode corretamente, pois não caberá na tela, dependendo de sua resolução. 
-2. O número de ingredientes iniciais deve ser 0, 1 e 2, por conta da própria especificação do problema.
+Recomendações e Limitações:
+1. É necessário maximizar o terminal, assim problemas com a animação são evitados.
+2. O número de fumantes mínimo é 1 e o máximo é 5, para que a animação não fique maior que a tela. *ainda pode haver problemas em sistemas com resolução muito baixa
+3. O número de ingredientes iniciais deve ser 0, 1 e 2, por conta da própria especificação do problema.
 
 Implementação:
 Existe uma thread distinta para cada fumante, bem como uma para o agente. O controle do ingrediente disponibilizado é feito através de mutexes. Enquanto um fumante pega um ingrediente, o acesso dos outros é bloquado. O agente também bloquei acesso enquanto faz a mudança do ingrediente, para evitar que fumantes interfiram durante o processo.
-
 A animação é feita por uma outra thread, que verificará o estado dos fumantes e do agente através de variáveis globais e desenhará a situação na tela de acordo.
-
 Por fim, outra thread escolhe frases aleatorias sobre os maleficios do cigarro. Esse foi um detalhe implementado apenas para deixar a animação mais divertida, não afetando o processo entre agente e fumantes.
 
 Melhorias possíveis:
